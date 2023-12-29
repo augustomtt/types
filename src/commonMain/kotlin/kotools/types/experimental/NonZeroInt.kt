@@ -14,12 +14,7 @@ import kotlin.jvm.JvmSynthetic
  *
  * Here's an example of calling this function from Kotlin code:
  *
- * ```kotlin
- * val number: NonZeroInt = 1.toNonZeroInt()
- *     .getOrThrow()
- * val result: NonZeroInt = -number // or number.unaryMinus()
- * println(result) // -1
- * ```
+ * @sample sample.kotools.types.experimental.nonZeroInt_unaryMinus_Kotlin
  *
  * Please note that this function is not available yet for Java users.
  */
@@ -57,9 +52,7 @@ public val NonZeroInt.Companion.negativeRange:
  *
  * Here's an example of calling this property from Kotlin code:
  *
- * ```kotlin
- * println(NonZeroInt.positiveRange) // [1;2147483647]
- * ```
+ * @sample sample.kotools.types.experimental.nonZeroInt_Companion_positiveRange
  *
  * Please note that this property is not available yet for Java users.
  */
