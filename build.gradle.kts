@@ -1,3 +1,6 @@
+import kotools.types.tasks.InlineKDocSamples
+import kotools.types.tasks.InlineKDocSamplesCleanup
+
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -34,4 +37,15 @@ dependencies {
     dokkaHtmlPlugin(libs.dokka.versioning)
 }
 
-tasks.register("unit")
+tasks {
+    register("unit")
+
+    val inlineKDocSamples: TaskProvider<InlineKDocSamples> =
+        register<InlineKDocSamples>("inlineKDocSamples")
+    val dokkaSamplesCleanup: TaskProvider<InlineKDocSamplesCleanup> =
+        register<InlineKDocSamplesCleanup>("inlineKDocSamplesCleanup")
+    dokkaHtml.configure {
+        dependsOn += inlineKDocSamples
+        finalizedBy(dokkaSamplesCleanup)
+    }
+}
